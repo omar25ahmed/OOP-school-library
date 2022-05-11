@@ -1,17 +1,17 @@
-require './nameable.rb'
+require './nameable'
 
 class Person < Nameable
   attr_accessor :name, :age
   attr_reader :id
 
   def initialize(age, name = 'Unknown', parent_permission: true)
+    super()
     @age = age
     @name = name
     @parent_permission = parent_permission
     @id = rand(1..100)
   end
 
-  
   def of_age?
     @age >= 18
   end
@@ -28,13 +28,13 @@ class Person < Nameable
   def correct_name
     @name
   end
-
 end
 
 class BaseDecorator < Nameable
   attr_accessor :nameable
 
   def initialize(nameable)
+    super()
     @nameable = nameable
   end
 
@@ -55,10 +55,9 @@ class TrimmerDecorator < BaseDecorator
   end
 end
 
-
 person = Person.new(22, 'maximilianus')
 p person.correct_name
-capitalizedPerson = CapitalizeDecorator.new(person)
-p capitalizedPerson.correct_name
-capitalizedTrimmedPerson = TrimmerDecorator.new(capitalizedPerson)
-p capitalizedTrimmedPerson.correct_name
+capitalized_person = CapitalizeDecorator.new(person)
+p capitalized_person.correct_name
+capitalized_trimmed_person = TrimmerDecorator.new(capitalized_person)
+p capitalized_trimmed_person.correct_name

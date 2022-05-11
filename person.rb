@@ -59,5 +59,3 @@ class TrimmerDecorator < BaseDecorator
     Rental.new(date, book, self)
   end
 end
-
-

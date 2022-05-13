@@ -1,13 +1,14 @@
-require './person.rb'
-require './student.rb'
-require './teacher.rb'
-require './nameable.rb'
-require './book.rb'
-require './rental.rb'
+require './person'
+require './student'
+require './teacher'
+require './nameable'
+require './book'
+require './rental'
 require './classroom'
 
 class App
   attr_reader :books, :persons, :rentals
+
   def initialize
     @books = []
     @persons = []
@@ -16,17 +17,17 @@ class App
 
   def list_books
     if @books.empty?
-      puts "No books found"
+      puts 'No books found'
     else
       @books.each_with_index do |book, index|
         puts "#{index}) Title: #{book.title}, Author: #{book.author}"
-    end
+      end
     end
   end
 
   def list_persons
     if @persons.empty?
-      puts "No Persons Found"
+      puts 'No Persons Found'
     else
       @persons.each_with_index do |person, index|
         puts "#{index}) [#{person.class}], Name: #{person.name} ID: #{person.id}, Age: #{person.age} "
@@ -35,40 +36,41 @@ class App
   end
 
   def create_person
-    puts "Do you want to create a student (1) or a teacher (2)? [input the number]"
+    puts 'Do you want to create a student (1) or a teacher (2)? [input the number]'
     selected_person = gets.chomp
-    if selected_person == '1'
-      puts "Age: "
+    case selected_person
+    when '1'
+      puts 'Age: '
       age = gets.chomp
-      puts "Name: "
+      puts 'Name: '
       name = gets.chomp
-      puts "Has parent permission [Y/N]: "
+      puts 'Has parent permission [Y/N]: '
       parent_permission = gets.chomp
-      puts "Classroom: "
+      puts 'Classroom: '
       classroom = gets.chomp
       @persons << Student.new(age, name, parent_permission, classroom)
-      puts "Person Created succesfully"
-    elsif selected_person == '2'
-      puts "Age: "
+      puts 'Person Created succesfully'
+    when '2'
+      puts 'Age: '
       age = gets.chomp
-      puts "Name: "
+      puts 'Name: '
       name = gets.chomp
-      puts "Specialization: "
+      puts 'Specialization: '
       specialization = gets.chomp
       @persons << Teacher.new(age, name, specialization)
-      puts "Person Created succesfully"
+      puts 'Person Created succesfully'
     else
-      puts "Invalid selection"
+      puts 'Invalid selection'
     end
   end
 
   def create_book
-    print "Title: "
+    print 'Title: '
     title = gets.chomp
-    print "Author: "
+    print 'Author: '
     author = gets.chomp
     @books << Book.new(title, author)
-    puts "Book created succesfully"
+    puts 'Book created succesfully'
   end
 
   def create_rental
@@ -80,7 +82,7 @@ class App
     print 'Date: '
     date = gets.chomp
     @rentals << selected_person.add_rental(date, selected_book)
-    puts "Rental created succesfully"
+    puts 'Rental created succesfully'
   end
 
   def list_rentals
@@ -93,7 +95,7 @@ class App
         puts "#{index + 1}) #{rental.date}, Book: #{rental.book.title} by #{rental.book.author}"
       end
     else
-      puts "No Rentals Found"
+      puts 'No Rentals Found'
     end
   end
 

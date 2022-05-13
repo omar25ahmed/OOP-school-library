@@ -91,7 +91,7 @@ class App
     person_details = @persons.find { |person| person.id == id }
     if person_details
       puts 'Rentals:'
-      person_details.rental.each_with_index do |rental, index|
+      person_details.rental.each do |rental, index|
         puts "#{index + 1}) #{rental.date}, Book: #{rental.book.title} by #{rental.book.author}"
       end
     else

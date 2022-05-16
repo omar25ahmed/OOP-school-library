@@ -45,7 +45,6 @@ class Main
     option = print_options
     pick_option(option)
   end
-
 end
 
 new_main = Main.new

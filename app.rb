@@ -71,6 +71,4 @@ class App
       puts 'No Rentals Found'
     end
   end
-
-
 end

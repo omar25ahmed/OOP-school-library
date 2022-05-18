@@ -17,9 +17,9 @@ class App
     @books = load_json('books.json').map { |b| Book.new(b['title'], b['author']) }
     @persons = load_json('people.json').map do |person|
       if person['type'] == 'Student'
-        Student.new(person['age'], person['name'], person['id'] , person['parent_permission'])
+        Student.new(person['age'], person['name'], person['id'], person['parent_permission'])
       else
-        Teacher.new(person['age'], person['name'], person['id'] , person['specialization'])
+        Teacher.new(person['age'], person['name'], person['id'], person['specialization'])
       end
     end
     @rentals = load_json('rentals.json')
@@ -58,9 +58,7 @@ class App
     book = Book.new(title, author)
     books << book.attrs
 
-    File.open("books.json", "w") do |f|
-      f.write(JSON.pretty_generate(books))
-    end
+    File.write('books.json', JSON.pretty_generate(books))
 
     @books << book
     puts 'Book created succesfully'
@@ -76,14 +74,11 @@ class App
     date = gets.chomp
     json = File.read('rentals.json')
     rentals = File.zero?('rentals.json') ? [] : JSON.parse(json)
-    rental_class = Rental.new(date, marked_person, marked_book)
-    rental =  {'date' => date, 'person' => marked_person.attrs, 'book' => marked_book.attrs}
+    rental = { 'date'=> date, 'person' => marked_person.attrs, 'book' => marked_book.attrs }
     rentals << rental
     @rentals << rental
 
-    File.open("rentals.json", "w") do |f|
-      f.write(JSON.pretty_generate(rentals))
-    end
+    File.write('rentals.json', JSON.pretty_generate(rentals))
     puts 'Rental created succesfully'
   end
 
@@ -91,13 +86,13 @@ class App
     print 'Id of person: '
     id = gets.chomp.to_i
     rentings = @rentals.select { |r| r['person']['id'].to_i == id }
-    unless rentings.empty?
+    if rentings.empty?
+      puts 'No Rentals Found'
+    else
       puts 'Rentals:'
       rentings.each_with_index do |rental, index|
         puts "#{index + 1}) #{rental['date']}, Book: #{rental['book']['title']} by #{rental['book']['author']}"
       end
-    else
-      puts 'No Rentals Found'
     end
   end
 

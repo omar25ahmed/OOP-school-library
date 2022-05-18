@@ -3,10 +3,9 @@ require './person'
 class Student < Person
   attr_accessor :classroom
 
-  def initialize(age, name, parent_permission, classroom)
-    super(age, name, parent_permission: parent_permission)
-
-    @classroom = classroom
+  def initialize(age, name, id, parent_permission)
+    super(age, name, id, parent_permission: parent_permission)
+    @classroom = rand(1..100)
   end
 
   def play_hooky

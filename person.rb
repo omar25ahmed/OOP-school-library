@@ -5,13 +5,14 @@ class Person < Nameable
   attr_accessor :name, :age, :rental
   attr_reader :id
 
-  def initialize(age, name = 'Unknown', parent_permission: true)
+  def initialize(age, id, name = 'Unknown', parent_permission: true)
     super()
     @age = age
     @name = name
     @parent_permission = parent_permission
-    @id = rand(1..100)
+    @id = id
     @rental = []
+    @type = self.class.name
   end
 
   def of_age?
@@ -29,6 +30,10 @@ class Person < Nameable
 
   def correct_name
     @name
+  end
+
+  def attrs
+    instance_variables.to_h { |ivar| [ivar.to_s.sub('@', ''), instance_variable_get(ivar)] }
   end
 
   def add_rental(date, book)

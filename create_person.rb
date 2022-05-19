@@ -16,7 +16,7 @@ module CreatePerson
       parent_permission = gets.chomp
       puts 'Student id: '
       id = gets.chomp
-      student = Student.new(age, name, id, parent_permission)
+      student = Student.new(age, id, name, parent_permission)
       people << student.attrs
       File.write('people.json', JSON.pretty_generate(people))
       @persons << student
@@ -30,7 +30,7 @@ module CreatePerson
       id = gets.chomp
       puts 'Specialization: '
       specialization = gets.chomp
-      teacher = Teacher.new(age, name, id, specialization)
+      teacher = Teacher.new(age, id, name, specialization)
       people << teacher.attrs
       File.write('people.json', JSON.pretty_generate(people))
       @persons << teacher

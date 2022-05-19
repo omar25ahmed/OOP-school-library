@@ -17,9 +17,9 @@ class App
     @books = load_json('books.json').map { |b| Book.new(b['title'], b['author']) }
     @persons = load_json('people.json').map do |person|
       if person['type'] == 'Student'
-        Student.new(person['age'], person['name'], person['id'], person['parent_permission'])
+        Student.new(person['age'], person['id'], person['name'], person['parent_permission'])
       else
-        Teacher.new(person['age'], person['name'], person['id'], person['specialization'])
+        Teacher.new(person['age'], person['id'], person['name'], person['specialization'])
       end
     end
     @rentals = load_json('rentals.json')

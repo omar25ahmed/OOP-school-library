@@ -3,8 +3,8 @@ require './person'
 class Student < Person
   attr_accessor :classroom
 
-  def initialize(age, name, id, parent_permission)
-    super(age, name, id, parent_permission: parent_permission)
+  def initialize(age, id, name, parent_permission)
+    super(age, id, name, parent_permission: parent_permission)
     @classroom = rand(1..100)
   end
 

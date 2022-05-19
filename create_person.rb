@@ -2,7 +2,7 @@ module CreatePerson
   def create_person
     puts 'Do you want to create a student (1) or a teacher (2)? [input the number]'
 
-    json = File.read('people.json')
+    json = File.file?('people.json') ? File.read('people.json') : File.new('people.json', 'w')
     people = File.zero?('people.json') ? [] : JSON.parse(json)
 
     selected_person = gets.chomp

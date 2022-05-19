@@ -25,6 +25,16 @@ class App
     @rentals = load_json('rentals.json')
   end
 
+  def list_persons
+    if @persons.empty?
+      puts 'No Persons Found'
+    else
+      @persons.each_with_index do |person, index|
+        puts "#{index}) [#{person.class}], Name: #{person.name} ID: #{person.id}, Age: #{person.age} "
+      end
+    end
+  end
+  
   def list_books
     if @books.empty?
       puts 'No books found'
@@ -36,15 +46,7 @@ class App
     end
   end
 
-  def list_persons
-    if @persons.empty?
-      puts 'No Persons Found'
-    else
-      @persons.each_with_index do |person, index|
-        puts "#{index}) [#{person.class}], Name: #{person.name} ID: #{person.id}, Age: #{person.age} "
-      end
-    end
-  end
+  
 
   def create_book
     print 'Title: '

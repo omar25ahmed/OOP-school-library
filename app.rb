@@ -53,15 +53,12 @@ class App
     author = gets.chomp
 
     json = File.file?('books.json') ? File.read('books.json') : File.new('books.json', 'w')
-    
-      books = File.zero?('books.json') ? [] : JSON.parse(json)
-      book = Book.new(title, author)
-      books << book.attrs
-      
-      File.open('books.json', 'w') do |f|
-        f.write(JSON.pretty_generate(books))
-      end
 
+    books = File.zero?('books.json') ? [] : JSON.parse(json)
+    book = Book.new(title, author)
+    books << book.attrs
+
+    File.write('books.json', JSON.pretty_generate(books))
 
     @books << book
     puts 'Book created succesfully'

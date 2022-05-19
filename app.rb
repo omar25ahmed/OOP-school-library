@@ -34,7 +34,7 @@ class App
       end
     end
   end
-  
+
   def list_books
     if @books.empty?
       puts 'No books found'
@@ -45,8 +45,6 @@ class App
       end
     end
   end
-
-  
 
   def create_book
     print 'Title: '

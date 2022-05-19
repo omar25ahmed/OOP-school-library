@@ -12,6 +12,6 @@ class Rental
   end
 
   def attrs
-    instance_variables.map { |ivar| [ ivar.to_s.sub('@', ''), instance_variable_get(ivar)] }.to_h
+    instance_variables.to_h { |ivar| [ivar.to_s.sub('@', ''), instance_variable_get(ivar)] }
   end
 end

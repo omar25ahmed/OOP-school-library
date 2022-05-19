@@ -74,7 +74,7 @@ class App
     date = gets.chomp
     json = File.read('rentals.json')
     rentals = File.zero?('rentals.json') ? [] : JSON.parse(json)
-    rental = { 'date'=> date, 'person' => marked_person.attrs, 'book' => marked_book.attrs }
+    rental = { 'date' => date, 'person' => marked_person.attrs, 'book' => marked_book.attrs }
     rentals << rental
     @rentals << rental
 

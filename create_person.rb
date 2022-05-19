@@ -18,9 +18,7 @@ module CreatePerson
       id = gets.chomp
       student = Student.new(age, name, id, parent_permission)
       people << student.attrs
-      File.open("people.json", "w") do |f|
-        f.write(JSON.pretty_generate(people))
-      end
+      File.write('people.json', JSON.pretty_generate(people))
       @persons << student
       puts 'Person Created succesfully'
     when '2'
@@ -34,9 +32,7 @@ module CreatePerson
       specialization = gets.chomp
       teacher = Teacher.new(age, name, id, specialization)
       people << teacher.attrs
-      File.open("people.json", "w") do |f|
-        f.write(JSON.pretty_generate(people))
-      end
+      File.write('people.json', JSON.pretty_generate(people))
       @persons << teacher
       puts 'Person Created succesfully'
     else

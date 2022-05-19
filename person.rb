@@ -5,7 +5,7 @@ class Person < Nameable
   attr_accessor :name, :age, :rental
   attr_reader :id
 
-  def initialize(age, name = 'Unknown', id, parent_permission: true)
+  def initialize(age, id, name = 'Unknown', parent_permission: true)
     super()
     @age = age
     @name = name
@@ -33,7 +33,7 @@ class Person < Nameable
   end
 
   def attrs
-    instance_variables.map { |ivar| [ ivar.to_s.sub('@', ''), instance_variable_get(ivar)] }.to_h
+    instance_variables.to_h { |ivar| [ivar.to_s.sub('@', ''), instance_variable_get(ivar)] }
   end
 
   def add_rental(date, book)

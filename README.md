@@ -27,6 +27,12 @@ Please find the requirements for this project [here](https://github.com/microver
 - LinkedIn: [https://www.linkedin.com/in/omar-ragheb/](https://www.linkedin.com/in/omar-ragheb/)
 - Twitter: [https://twitter.com/Omar25Ahmed](https://twitter.com/Omar25Ahmed)
 
+👤 **Ntare Guy**
+
+- GitHub: [https://github.com/41hulk](https://github.com/41hulk)
+- LinkedIn: [https://www.linkedin.com/in/ntare-guy/](https://www.linkedin.com/in/ntare-guy/)
+- Twitter: [https://twitter.com/ntare_guy](https://twitter.com/ntare_guy)
+
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!

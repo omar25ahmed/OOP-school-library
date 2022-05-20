@@ -1,5 +1,5 @@
 require './rental'
-require './book.rb'
+require './book'
 require './person'
 
 describe Rental do

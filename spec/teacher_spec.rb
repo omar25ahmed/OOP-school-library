@@ -1,4 +1,4 @@
-require './teacher.rb'
+require './teacher'
 
 describe Teacher do
   before(:each) do
@@ -6,10 +6,10 @@ describe Teacher do
   end
 
   it 'should use service' do
-  expect(@teacher.can_use_services?).to be true
+    expect(@teacher.can_use_services?).to be true
   end
 
   it 'should be instance' do
-    expect(@teacher) .to be_an_instance_of(Teacher)
+    expect(@teacher).to be_an_instance_of(Teacher)
   end
 end

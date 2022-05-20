@@ -3,7 +3,7 @@ require './rental'
 
 class Person < Nameable
   attr_accessor :name, :age, :rental
-  attr_reader :id
+  attr_reader :id, :type
 
   def initialize(age, id, name = 'Unknown', parent_permission: true)
     super()
@@ -38,34 +38,5 @@ class Person < Nameable
 
   def add_rental(date, book)
     Rental.new(date, self, book)
-  end
-end
-
-class BaseDecorator < Nameable
-  attr_accessor :nameable
-
-  def initialize(nameable)
-    super()
-    @nameable = nameable
-  end
-
-  def correct_name
-    @nameable.correct_name
-  end
-end
-
-class CapitalizeDecorator < BaseDecorator
-  def correct_name
-    @nameable.correct_name.upcase
-  end
-end
-
-class TrimmerDecorator < BaseDecorator
-  def correct_name
-    @nameable.correct_name[0..9] if @nameable.correct_name.length >= 10
-  end
-
-  def add_rental(book, date)
-    Rental.new(date, book, self)
   end
 end
